@@ -18,7 +18,7 @@ void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
-	//textMode(SHAPE);
+	textMode(SHAPE);
 	textSize(10);
 	textAlign(CENTER);
 	fill(70);

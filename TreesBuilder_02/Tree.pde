@@ -39,7 +39,7 @@ class Tree{
 		//Reducing and randomizing branching coeficients.
 
 		len = random(len*lenMult*0.8, len*lenMult);
-		angleR = random(angleR*angleMult*0.6, angleR*angleMult);
+		angleR = random(angleR*angleMult*0.8, angleR*angleMult);
 
 		strokeWeight(len/8);
 

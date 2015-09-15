@@ -36,7 +36,7 @@ public void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
-	//textMode(SHAPE);
+	textMode(SHAPE);
 	textSize(10);
 	textAlign(CENTER);
 	fill(70);
@@ -125,7 +125,7 @@ class Tree{
 		//Reducing and randomizing branching coeficients.
 
 		len = random(len*lenMult*0.8f, len*lenMult);
-		angleR = random(angleR*angleMult*0.6f, angleR*angleMult);
+		angleR = random(angleR*angleMult*0.8f, angleR*angleMult);
 
 		strokeWeight(len/8);
 
