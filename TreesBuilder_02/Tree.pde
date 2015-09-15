@@ -1,19 +1,21 @@
 class Tree{
 	
 	PVector loc;
-	float angle, length, lenMult, angleMult;
-	int lim, counter;
+	float angle, length, lenMult, angleMult, lim;
+	int counter;
 
-	Tree(PVector _loc, float _lenMult, float _angleMult){
+	Tree(PVector _loc, float _angle, float _lim){
 
 		//Redirecting class attributes.
 		loc = _loc;
-		lenMult = _lenMult;
-		angleMult = _angleMult;
+		lenMult = 0.8;
+		angleMult = 0.8;
 
-		angle = HALF_PI;
+		// angle = HALF_PI;
+		angle = _angle;
 		length = 30;
-		lim = 3;
+		lim = _lim;
+		// lim = 3;
 	}
 
 
@@ -21,7 +23,7 @@ class Tree{
 
 		pushMatrix();
 		translate(loc.x, loc.y);
-		text("LenMult: " + str(lenMult) + "|| " + "angleMult: " + str(angleMult), 0, 15);
+		text("Limit: " + str(lim) + " || " + "Angle: " + str(degrees(angle)) + "°", 0, 25);
 		grow(length, angle);
 		popMatrix();
 
@@ -37,8 +39,9 @@ class Tree{
 		//Reducing and randomizing branching coeficients.
 
 		len = random(len*lenMult*0.8, len*lenMult);
-		angleR = random(angleR*angleMult*0.8, angleR*angleMult);
+		angleR = random(angleR*angleMult*0.6, angleR*angleMult);
 
+		strokeWeight(len/8);
 
 		if (len>lim) {
 
