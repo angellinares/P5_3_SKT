@@ -18,7 +18,7 @@ public class TreesBuilder_02 extends PApplet {
 
 ArrayList<Tree> Trees = new ArrayList<Tree>();
 PVector mousePos;
-int item;
+int item, numTrees, test;
 
 public void setup() {
 

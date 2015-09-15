@@ -2,12 +2,16 @@
 
 ArrayList<Tree> Trees = new ArrayList<Tree>();
 PVector mousePos;
-int item, numTrees, test;
+int item, numTreesX, numTreesY, test;
 
 void setup() {
 
 	size(512, 512);
 	background(220);
+
+	for (int i = 0; i < numTreesX; ++i) {
+		
+	}
 	
 }
 
