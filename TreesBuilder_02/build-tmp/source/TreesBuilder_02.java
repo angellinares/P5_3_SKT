@@ -32,6 +32,10 @@ public void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
+	textSize(12);
+	textAlign(CENTER);
+	fill(70);
+
 	for (int i = 0; i < numTreesX; ++i) {
 
 		for (int j = 0; j < numTreesY; ++j) {
@@ -39,7 +43,7 @@ public void setup() {
 			//Tree position
 			pos = new PVector((modX*i)+margin+(modX/2),(modY*j)+margin+(modY/1.5f));
 
-			Trees.add(new Tree(pos));
+			Trees.add(new Tree(pos,0.2f*i,0.2f*j));
 
 		}
 		
@@ -71,16 +75,19 @@ public void draw() {
 class Tree{
 	
 	PVector loc;
-	float angle, length;
+	float angle, length, lenMult, angleMult;
 	int lim, counter;
 
-	Tree(PVector _loc){
+	Tree(PVector _loc, float _lenMult, float _angleMult){
 
+		//Redirecting class attributes.
 		loc = _loc;
-		counter = 0;
+		lenMult = _lenMult;
+		angleMult = _angleMult;
+
 		angle = HALF_PI;
 		length = 30;
-		lim = 10;
+		lim = 3;
 	}
 
 
@@ -88,28 +95,35 @@ class Tree{
 
 		pushMatrix();
 		translate(loc.x, loc.y);
-		grow(length);
+		text("LenMult: " + str(lenMult) + "|| " + "angleMult: " + str(angleMult), 0, 15);
+		grow(length, angle);
 		popMatrix();
 
 	}
 
-	public void grow(float len){
+	public void grow(float len, float angleR){
 
 		strokeWeight(len/8);
 		line(0, 0, 0, -len);
 		translate(0, -len);
-		len*=0.8f;
+		//len*=0.8;
 
-		if (len>3) {
+		//Reducing and randomizing branching coeficients.
+
+		len = random(len*lenMult*0.8f, len*lenMult);
+		angleR = random(angleR*angleMult*0.8f, angleR*angleMult);
+
+
+		if (len>lim) {
 
 			pushMatrix();
-			rotate(mouseX*0.01f);
+			rotate(angleR);
 			line(0, 0, 0, -len);
-			grow(len);
+			grow(len,angleR);
 			popMatrix();
-			rotate(-mouseX*0.01f);
+			rotate(-angleR);
 			line(0, 0, 0, -len);
-			grow(len);
+			grow(len,angleR);
 		}
 	}
 

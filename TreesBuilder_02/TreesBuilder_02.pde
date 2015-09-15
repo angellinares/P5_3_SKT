@@ -16,6 +16,10 @@ void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
+	textSize(12);
+	textAlign(CENTER);
+	fill(70);
+
 	for (int i = 0; i < numTreesX; ++i) {
 
 		for (int j = 0; j < numTreesY; ++j) {
@@ -23,7 +27,7 @@ void setup() {
 			//Tree position
 			pos = new PVector((modX*i)+margin+(modX/2),(modY*j)+margin+(modY/1.5));
 
-			Trees.add(new Tree(pos));
+			Trees.add(new Tree(pos,0.2*i,0.2*j));
 
 		}
 		

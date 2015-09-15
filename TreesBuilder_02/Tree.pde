@@ -8,8 +8,8 @@ class Tree{
 
 		//Redirecting class attributes.
 		loc = _loc;
-		lenMult = _lenMult
-		angleMult = _angleMult
+		lenMult = _lenMult;
+		angleMult = _angleMult;
 
 		angle = HALF_PI;
 		length = 30;
@@ -21,6 +21,7 @@ class Tree{
 
 		pushMatrix();
 		translate(loc.x, loc.y);
+		text("LenMult: " + str(lenMult) + "|| " + "angleMult: " + str(angleMult), 0, 15);
 		grow(length, angle);
 		popMatrix();
 
@@ -37,6 +38,7 @@ class Tree{
 
 		len = random(len*lenMult*0.8, len*lenMult);
 		angleR = random(angleR*angleMult*0.8, angleR*angleMult);
+
 
 		if (len>lim) {
 
