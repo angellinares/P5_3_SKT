@@ -17,13 +17,33 @@ public class TreesBuilder_02 extends PApplet {
 // Build trees clicking in the window
 
 ArrayList<Tree> Trees = new ArrayList<Tree>();
-PVector mousePos;
-int item;
+PVector mousePos, pos;
+int item, numTreesX, numTreesY, test;
+int margin = 10;
 
 public void setup() {
 
 	
 	background(220);
+
+	numTreesX = 5;
+	numTreesY = 5;
+
+	float modX = (width-(margin*2))/numTreesX;
+	float modY = (height-(margin*2))/numTreesY;
+
+	for (int i = 0; i < numTreesX; ++i) {
+
+		for (int j = 0; j < numTreesY; ++j) {
+			
+			//Tree position
+			pos = new PVector((modX*i)+margin+(modX/2),(modY*j)+margin+(modY/1.5f));
+
+			Trees.add(new Tree(pos));
+
+		}
+		
+	}
 	
 }
 
@@ -38,16 +58,16 @@ public void draw() {
 	
 }
 
-public void mousePressed(){
-	mousePos = new PVector(mouseX,mouseY);
-	Trees.add(new Tree(mousePos));
+// void mousePressed(){
+// 	mousePos = new PVector(mouseX,mouseY);
+// 	Trees.add(new Tree(mousePos));
 
-	item = Trees.size()-1;
+// 	item = Trees.size()-1;
 
-	Tree t1 = Trees.get(item);
-	t1.plant();
+// 	Tree t1 = Trees.get(item);
+// 	t1.plant();
 
-}
+// }
 class Tree{
 	
 	PVector loc;
@@ -59,7 +79,7 @@ class Tree{
 		loc = _loc;
 		counter = 0;
 		angle = HALF_PI;
-		length = 50;
+		length = 30;
 		lim = 10;
 	}
 
@@ -80,7 +100,7 @@ class Tree{
 		translate(0, -len);
 		len*=0.8f;
 
-		if (len>5) {
+		if (len>3) {
 
 			pushMatrix();
 			rotate(mouseX*0.01f);
@@ -94,7 +114,7 @@ class Tree{
 	}
 
 }
-  public void settings() { 	size(512, 512); }
+  public void settings() { 	size(1024, 1024); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "TreesBuilder_02" };
     if (passedArgs != null) {

@@ -9,7 +9,7 @@ class Tree{
 		loc = _loc;
 		counter = 0;
 		angle = HALF_PI;
-		length = 50;
+		length = 30;
 		lim = 10;
 	}
 
@@ -30,7 +30,7 @@ class Tree{
 		translate(0, -len);
 		len*=0.8;
 
-		if (len>5) {
+		if (len>3) {
 
 			pushMatrix();
 			rotate(mouseX*0.01);
