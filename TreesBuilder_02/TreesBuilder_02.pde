@@ -2,13 +2,16 @@
 
 ArrayList<Tree> Trees = new ArrayList<Tree>();
 PVector mousePos, pos;
-int item, numTreesX, numTreesY, test, margin;
-margin = 10
+int item, numTreesX, numTreesY, test;
+int margin = 10;
 
 void setup() {
 
 	size(1024, 1024);
 	background(220);
+
+	numTreesX = 5;
+	numTreesY = 5;
 
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
@@ -18,9 +21,9 @@ void setup() {
 		for (int j = 0; j < numTreesY; ++j) {
 			
 			//Tree position
-			pos = PVector((modX*i)+margin,(modY*j)+margin);
+			pos = new PVector((modX*i)+margin+(modX/2),(modY*j)+margin+(modY/1.5));
 
-			Trees.add(new Tree(pos))
+			Trees.add(new Tree(pos));
 
 		}
 		
