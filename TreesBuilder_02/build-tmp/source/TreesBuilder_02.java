@@ -99,7 +99,7 @@ class Tree{
 
 		// angle = HALF_PI;
 		angle = _angle;
-		length = 30;
+		length = 20;
 		lim = _lim;
 		// lim = 3;
 	}
@@ -109,7 +109,8 @@ class Tree{
 
 		pushMatrix();
 		translate(loc.x, loc.y);
-		text("Limit: " + str(lim) + " || " + "Angle: " + str(degrees(angle)) + "\u00b0", 0, 25);
+		tag();
+		noFill();
 		grow(length, angle);
 		popMatrix();
 
@@ -133,13 +134,24 @@ class Tree{
 
 			pushMatrix();
 			rotate(angleR);
-			line(0, 0, 0, -len);
+			//line(0, 0, 0, -len);
+			bezier(0.00f,0.00f,len/2,-len/2,-len/2,-len/2,0.00f,-len);
+			translate(0, -len);
 			grow(len,angleR);
 			popMatrix();
 			rotate(-angleR);
-			line(0, 0, 0, -len);
+			strokeWeight(len/8);
+			//line(0, 0, 0, -len);
+			bezier(0.00f,0.00f,-len/2,-len/2,len/2,-len/2,0.00f,-len);
+			translate(0, -len);
 			grow(len,angleR);
 		}
+	}
+
+	public void tag(){
+
+		text("Limit: " + str(lim) + " || " + "Angle: " + str(degrees(angle)) + "\u00b0", 0, 25);
+
 	}
 
 }
