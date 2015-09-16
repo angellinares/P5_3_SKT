@@ -6,11 +6,12 @@ ArrayList<Tree> Trees = new ArrayList<Tree>();
 PVector mousePos, pos;
 int item, numTreesX, numTreesY, test;
 int margin = 10;
+PFont font;
 
 void setup() {
 
 	size(1024, 1024, PDF, "FrameDemo.pdf");
-	background(220);
+	background(175);
 
 	numTreesX = 5;
 	numTreesY = 5;
@@ -18,10 +19,12 @@ void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
-	textMode(SHAPE);
+	font = createFont("HelveticaLTStd-Roman",10);
+	textFont(font);
+	textMode(MODEL);
 	textSize(10);
 	textAlign(CENTER);
-	fill(70);
+	//fill(70);
 
 	for (int i = 0; i < numTreesX; ++i) {
 
@@ -37,7 +40,7 @@ void setup() {
 	}
 
 	for (int i = 0; i < Trees.size(); ++i) {
-
+		stroke(250,150);
 		Trees.get(i).plant();
 		
 	}
@@ -45,24 +48,7 @@ void setup() {
 }
 
 void draw() {
-	
-	// background(220);
-	// for (int i = 0; i < Trees.size(); ++i) {
 
-	// 	Trees.get(i).plant();
-		
-	// }
 	exit();
 	
 }
-
-// void mousePressed(){
-// 	mousePos = new PVector(mouseX,mouseY);
-// 	Trees.add(new Tree(mousePos));
-
-// 	item = Trees.size()-1;
-
-// 	Tree t1 = Trees.get(item);
-// 	t1.plant();
-
-// }
