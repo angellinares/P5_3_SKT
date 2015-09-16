@@ -24,11 +24,12 @@ ArrayList<Tree> Trees = new ArrayList<Tree>();
 PVector mousePos, pos;
 int item, numTreesX, numTreesY, test;
 int margin = 10;
+PFont font;
 
 public void setup() {
 
 	
-	background(220);
+	background(175);
 
 	numTreesX = 5;
 	numTreesY = 5;
@@ -36,10 +37,12 @@ public void setup() {
 	float modX = (width-(margin*2))/numTreesX;
 	float modY = (height-(margin*2))/numTreesY;
 
-	textMode(SHAPE);
+	font = createFont("HelveticaLTStd-Roman",10);
+	textFont(font);
+	textMode(MODEL);
 	textSize(10);
 	textAlign(CENTER);
-	fill(70);
+	//fill(70);
 
 	for (int i = 0; i < numTreesX; ++i) {
 
@@ -55,7 +58,7 @@ public void setup() {
 	}
 
 	for (int i = 0; i < Trees.size(); ++i) {
-
+		stroke(250,150);
 		Trees.get(i).plant();
 		
 	}
@@ -95,11 +98,11 @@ class Tree{
 		//Redirecting class attributes.
 		loc = _loc;
 		lenMult = 0.8f;
-		angleMult = 0.8f;
+		angleMult = 1.1f;
 
 		// angle = HALF_PI;
 		angle = _angle;
-		length = 20;
+		length = 30;
 		lim = _lim;
 		// lim = 3;
 	}
@@ -118,8 +121,13 @@ class Tree{
 
 	public void grow(float len, float angleR){
 
-		strokeWeight(len/8);
-		line(0, 0, 0, -len);
+		if (len == length) {
+			strokeCap(SQUARE);
+			strokeWeight(len/16);
+			line(0, 0, 0, -len);
+			strokeCap(ROUND);
+		}
+		
 		translate(0, -len);
 		//len*=0.8;
 
@@ -136,20 +144,20 @@ class Tree{
 			rotate(angleR);
 			//line(0, 0, 0, -len);
 			bezier(0.00f,0.00f,len/2,-len/2,-len/2,-len/2,0.00f,-len);
-			translate(0, -len);
+			//translate(0, -len);
 			grow(len,angleR);
 			popMatrix();
 			rotate(-angleR);
 			strokeWeight(len/8);
 			//line(0, 0, 0, -len);
 			bezier(0.00f,0.00f,-len/2,-len/2,len/2,-len/2,0.00f,-len);
-			translate(0, -len);
+			//translate(0, -len);
 			grow(len,angleR);
 		}
 	}
 
 	public void tag(){
-
+		fill(255);
 		text("Limit: " + str(lim) + " || " + "Angle: " + str(degrees(angle)) + "\u00b0", 0, 25);
 
 	}

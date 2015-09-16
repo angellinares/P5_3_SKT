@@ -9,11 +9,11 @@ class Tree{
 		//Redirecting class attributes.
 		loc = _loc;
 		lenMult = 0.8;
-		angleMult = 0.8;
+		angleMult = 1.1;
 
 		// angle = HALF_PI;
 		angle = _angle;
-		length = 20;
+		length = 30;
 		lim = _lim;
 		// lim = 3;
 	}
@@ -32,8 +32,13 @@ class Tree{
 
 	void grow(float len, float angleR){
 
-		strokeWeight(len/8);
-		line(0, 0, 0, -len);
+		if (len == length) {
+			strokeCap(SQUARE);
+			strokeWeight(len/16);
+			line(0, 0, 0, -len);
+			strokeCap(ROUND);
+		}
+		
 		translate(0, -len);
 		//len*=0.8;
 
@@ -50,20 +55,20 @@ class Tree{
 			rotate(angleR);
 			//line(0, 0, 0, -len);
 			bezier(0.00,0.00,len/2,-len/2,-len/2,-len/2,0.00,-len);
-			translate(0, -len);
+			//translate(0, -len);
 			grow(len,angleR);
 			popMatrix();
 			rotate(-angleR);
 			strokeWeight(len/8);
 			//line(0, 0, 0, -len);
 			bezier(0.00,0.00,-len/2,-len/2,len/2,-len/2,0.00,-len);
-			translate(0, -len);
+			//translate(0, -len);
 			grow(len,angleR);
 		}
 	}
 
 	void tag(){
-
+		fill(255);
 		text("Limit: " + str(lim) + " || " + "Angle: " + str(degrees(angle)) + "°", 0, 25);
 
 	}
