@@ -48,24 +48,7 @@ void setup() {
 }
 
 void draw() {
-	
-	// background(220);
-	// for (int i = 0; i < Trees.size(); ++i) {
 
-	// 	Trees.get(i).plant();
-		
-	// }
 	exit();
 	
 }
-
-// void mousePressed(){
-// 	mousePos = new PVector(mouseX,mouseY);
-// 	Trees.add(new Tree(mousePos));
-
-// 	item = Trees.size()-1;
-
-// 	Tree t1 = Trees.get(item);
-// 	t1.plant();
-
-// }
